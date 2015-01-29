@@ -357,7 +357,7 @@ class Instagram {
    * @return mixed
    */
   public function getLocation($id) {
-    return $this->_makeCall('locations/' . $id, false);
+    return $this->_makeCall('locations/' . $id, true);
   }
 
   /**
