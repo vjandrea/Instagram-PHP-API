@@ -282,10 +282,11 @@ class Instagram {
    *
    * @param string $name                  Valid tag name
    * @param integer [optional] $limit     Limit of returned results
+   * @param array [optional] $params      Additional parameters for _makeCall
    * @return mixed
    */
-  public function getTagMedia($name, $limit = 0) {
-    return $this->_makeCall('tags/' . $name . '/media/recent', false, array('count' => $limit));
+  public function getTagMedia($name, $limit = 0, $params = []) {
+    return $this->_makeCall('tags/' . $name . '/media/recent', false, array_merge(['count' => $limit], $params));
   }
 
   /**
@@ -364,10 +365,11 @@ class Instagram {
    * Get recent media from a given location
    *
    * @param integer $id                   Instagram location ID
+   * @param array $params                 Optional parameters for _makeCall
    * @return mixed
    */
-  public function getLocationMedia($id) {
-    return $this->_makeCall('locations/' . $id . '/media/recent', true);
+  public function getLocationMedia($id, $params = null) {
+    return $this->_makeCall('locations/' . $id . '/media/recent', true, $params);
   }
 
   /**
